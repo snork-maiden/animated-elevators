@@ -1,22 +1,20 @@
 <script setup>
 import houseConfig from '../../houseConfig'
-import ElevatorItem from './ElevatorItem.vue'
-import FloorButton from './FloorButton.vue';
+import ElevatorShaft from './ElevatorShaft.vue'
+import FloorButton from './FloorButton.vue'
 </script>
 
 <template>
   <div class="wrapper">
     <div class="elevators">
-      <ElevatorItem
-        :elevator-id="elevatorNumber"
-        v-bind:key="elevatorNumber"
+      <ElevatorShaft
+        :elevator-id="elevatorNumber - 1"
+        :key="elevatorNumber"
         v-for="elevatorNumber in houseConfig.elevatorsCount"
       />
     </div>
-    <div class="buttons-wrapper">
-      <FloorButton v-for="floor in houseConfig.floorsNumber" :key="floor">
-        {{ floor }}
-      </FloorButton>
+    <div class="buttons">
+      <FloorButton v-for="floor in houseConfig.floorsNumber" :key="floor" :floor="floor" />
     </div>
   </div>
 </template>
@@ -29,20 +27,8 @@ import FloorButton from './FloorButton.vue';
   gap: 2em;
 }
 
-.button {
-  margin-left: min(8vw, 5em);
-  border-radius: 50%;
+.buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font: inherit;
-  line-height: 1;
-  aspect-ratio: 1/1;
-  font-weight: 500;
-  width: clamp(25px, 4vw, 35px);
-}
-
-.isWaiting {
-  background-color: salmon;
+  flex-direction: column-reverse;
 }
 </style>
