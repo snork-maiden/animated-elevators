@@ -1,5 +1,5 @@
 const houseConfig = {
-    floorsNumber: 7,
-    elevatorsCount: 4,
+    floorsNumber: 5,
+    elevatorsCount: 1,
 }
 export default houseConfig;
