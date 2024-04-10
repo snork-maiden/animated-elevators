@@ -5,8 +5,8 @@
   --color-background:  #e4f2f7;
   --elevator-bg-color: #899fa8;
   --shaft-bg-color:#362a1b;
-  --floor-height: min(128px, 20vw);
-  --floor-width: min(100px, 15vw);
+  --floor-height: min(150px, 14vh);
+  --floor-width: min(130px, 10vh);
 }
 
 *,
@@ -37,7 +37,7 @@ body {
     "Droid Sans",
     "Helvetica Neue",
     sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

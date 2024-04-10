@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useElevatorsStore } from '../stores/elevators'
+import ArrowIcon from './icons/ArrowIcon.vue'
 
 const props = defineProps({
   elevatorId: Number
@@ -21,11 +22,10 @@ let isDoorsOpen = computed(() => {
 <template>
   <div class="elevator" :class="{ openDoors: isDoorsOpen }">
     <span class="visually-hidden">Elevator is here</span>
-    <template v-if="isMoving">
-      {{
-        (elevatorsStore.isUp(elevatorId) ? '🔼' : '🔽') + elevatorsStore.elevators[elevatorId].goal
-      }}
-    </template>
+    <span class="goal">
+      {{ elevatorsStore.elevators[elevatorId].goal || '' }}
+      <ArrowIcon v-if="isMoving" :direction="elevatorsStore.isUp(elevatorId) ? 'up' : 'down'" />
+    </span>
   </div>
 </template>
 
@@ -37,11 +37,17 @@ let isDoorsOpen = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: min(4vw, 30px);
+  font-size: min(8vw, 30px);
 }
 
 .openDoors {
   animation: blink-animation 0.7s steps(5, start) infinite;
+  animation-delay: 0.4s;
+}
+
+.goal {
+  display: flex;
+  font-weight: 600;
 }
 
 @keyframes blink-animation {

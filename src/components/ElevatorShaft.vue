@@ -32,6 +32,6 @@ const floor = computed(() => elevatorsStore.elevators[props.elevatorId].currentF
   position: absolute;
   bottom: 0;
   transform: v-bind('`translateY(calc(-100% * ${floor-1})) `');
-  transition: transform 0.4s;
+  transition: transform 0.3s;
 }
 </style>

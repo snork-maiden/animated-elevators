@@ -29,16 +29,23 @@ defineProps({
 }
 .button {
   cursor: pointer;
-  margin-left: min(8vw, 5em);
+  margin-right: min(8vw, 5em);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font: inherit;
+  font-size: 22px;
   line-height: 1;
   aspect-ratio: 1/1;
   font-weight: 500;
-  width: clamp(25px, 6vw, 55px);
+  width: 50px;
+}
+
+@media screen and (hover: hover) {
+  .button {
+    width: clamp(25px, 6vw, 55px);
+  }
 }
 
 .button:active {
