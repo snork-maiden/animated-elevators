@@ -1,26 +1,29 @@
 <script setup>
+import { computed } from 'vue'
 import { useElevatorsStore } from '../stores/elevators'
 
 const props = defineProps({
-  isMoving: Boolean,
   elevatorId: Number
 })
 
 const elevatorsStore = useElevatorsStore()
 
-function isDoorsOpen() {
+let isMoving = computed(() => {
+  const elevator = elevatorsStore.elevators[props.elevatorId]
+  return elevator.goal && elevator.goal !== elevator.currentFloor
+})
+let isDoorsOpen = computed(() => {
   if (props.isMoving) return false
-  return elevatorsStore?.isDoorsOpen(props.elevatorId)
-}
+  return elevatorsStore.isDoorsOpen(props.elevatorId)
+})
 </script>
 
 <template>
-  <div class="elevator" :class="{ openDoors: isDoorsOpen() }">
+  <div class="elevator" :class="{ openDoors: isDoorsOpen }">
     <span class="visually-hidden">Elevator is here</span>
     <template v-if="isMoving">
       {{
-        (elevatorsStore.isUp(elevatorId) ? '🔼' : '🔽') +
-        elevatorsStore.elevators.elevatorsData[elevatorId].goal
+        (elevatorsStore.isUp(elevatorId) ? '🔼' : '🔽') + elevatorsStore.elevators[elevatorId].goal
       }}
     </template>
   </div>

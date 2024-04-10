@@ -1,7 +1,11 @@
 <script setup>
+import { useElevatorsStore } from '@/stores/elevators';
 import houseConfig from '../../houseConfig'
 import ElevatorShaft from './ElevatorShaft.vue'
 import FloorButton from './FloorButton.vue'
+
+const elevatorsStore = useElevatorsStore()
+
 </script>
 
 <template>
@@ -16,7 +20,9 @@ import FloorButton from './FloorButton.vue'
     <div class="buttons">
       <FloorButton v-for="floor in houseConfig.floorsNumber" :key="floor" :floor="floor" />
     </div>
+
   </div>
+  <button type="button" @click="elevatorsStore.resetElevators()">Reset</button>
 </template>
 <style scoped>
 .wrapper {
