@@ -1,14 +1,14 @@
-# animated-elevators
+# Elevator Emulator
 
-This template should help get you started developing with Vue 3 in Vite.
+An SPA built with Vue 3 (Composition API) and Pinia that emulates an elevator system.
 
-## Recommended IDE Setup
+## Features:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- **Basic Operation**: Moves to called floor, waits for 3 seconds, and returns to idle.
+- **Queue System**: Processes multiple calls sequentially.
+- **State Persistence**: Resumes state after page reload.
+- **Scalability**: Easily adjustable number of floors and elevators.
+- **Elevator Display**: Shows direction and target floor.
 
 ## Project Setup
 
@@ -19,17 +19,11 @@ npm install
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+npm run start
 ```
 
 ### Compile and Minify for Production
 
 ```sh
 npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
